@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Allocation Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .form-container h1 {
+            text-align: center;
+        }
+        .form-container label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        .form-container input, .form-container select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #e9ecef;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Portfolio Allocation Predictor</h1>
+        <form method="POST">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="income">Income:</label>
+            <input type="number" id="income" name="income" required>
+
+            <label for="risk_tolerance">Risk Tolerance:</label>
+            <select id="risk_tolerance" name="risk_tolerance" required>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+
+            <label for="stock_trend">Stock Trend (%):</label>
+            <input type="number" step="0.01" id="stock_trend" name="stock_trend" required>
+
+            <label for="bond_trend">Bond Trend (%):</label>
+            <input type="number" step="0.01" id="bond_trend" name="bond_trend" required>
+
+            <label for="gold_trend">Gold Trend (%):</label>
+            <input type="number" step="0.01" id="gold_trend" name="gold_trend" required>
+
+            <label for="crypto_trend">Crypto Trend (%):</label>
+            <input type="number" step="0.01" id="crypto_trend" name="crypto_trend" required>
+
+            <button type="submit">Predict Portfolio Allocation</button>
+        </form>
+
+        {% if result %}
+        <div class="result">
+            <h2>Predicted Portfolio Allocation:</h2>
+            <p>Stocks: {{ result.Stocks }}</p>
+            <p>Bonds: {{ result.Bonds }}</p>
+            <p>Gold: {{ result.Gold }}</p>
+            <p>Crypto: {{ result.Crypto }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
